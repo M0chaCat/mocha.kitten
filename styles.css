@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: nasinnanpa;
-    src: url("https://arcane.kitties.cat/Nasin Nanpa.otf");
+    src: url("./Nasin Nanpa.otf");
 }
 
 .crt-overlay {
@@ -30,6 +30,10 @@
     to {
         background-position: 0 -10px;
     }
+}
+
+body.no-crt .crt-overlay {
+    display: none;
 }
 
 :root {
@@ -64,7 +68,7 @@ body {
 }
 
 .container {
-    max-width: 1200px; /* Increased max-width for two columns */
+    max-width: 1000px; /* Increased max-width for two columns */
     margin: 0 auto;
     padding: 2rem;
     min-height: 100vh;
@@ -164,6 +168,11 @@ body {
     text-align: center;
 }
 
+.intro {
+    position: relative;
+    overflow: hidden;
+}
+
 .profile-pic {
     width: 150px;
     height: 150px;
@@ -178,6 +187,19 @@ body {
 
 .profile-pic:hover {
     transform: scale(1.05);
+}
+
+.ghost-box {
+    width: 150px;
+        height: 150px;
+        border-radius: 0;
+        margin: 1.5rem auto;
+        border: 3px solid var(--lavender);
+        transition: transform 0.3s ease;
+        object-fit: cover;
+        padding: 5px;
+        background-color: var(--base);
+        cursor: pointer;
 }
 
 h1 {
@@ -263,17 +285,18 @@ h1 {
     margin-bottom: 1rem;
 }
 
-.ad-left {
-    position: fixed;
-    top: 120px; /* adjust vertical position */
-    left: 20px; /* distance from left edge */
-    width: 300px;
-    height: 300px;
-    z-index: 1000;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
-    border-radius: 4px;
-    overflow: hidden;
-    background-color: white;
+.ad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ad iframe,
+.ad img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* keeps it square */
+    height: auto;
+    border: 0;
 }
 
 /* Hide ad on smaller screens */
@@ -281,4 +304,81 @@ h1 {
     .ad-left {
         display: none;
     }
+}
+
+.now-playing .track {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.now-playing img {
+    width: 90px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.track-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.track-title {
+    font-weight: bold;
+}
+
+.track-artist {
+    opacity: 0.8;
+    font-size: 0.95em;
+}
+
+.track-time {
+    opacity: 0.6;
+    font-size: 0.8em;
+}
+
+/* 7-segment style numbers */
+.digital-number {
+    font-family: 'digital', monospace;
+    font-weight: bold;
+    font-size: 3rem;
+    color: #0f0;
+    letter-spacing: 0.1em;
+    text-shadow:
+        0 0 5px #0f0,
+        0 0 10px #0f0,
+        0 0 20px #0f0,
+        0 0 40px #0f0;
+}
+
+.hitcard {
+    color: rgb(0, 255, 55);
+    margin: 0;
+    overflow: hidden;
+}
+@font-face {
+    font-family: "Digital";
+    src: url("https://dimden.dev/hc/fonts/Digital-7.ttf?") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+.counter {
+    font-family: Digital;
+    float: right;
+    right: 0;
+    position: absolute;
+    font-size: 16px;
+}
+.green {
+    z-index: 5;
+}
+.gray {
+    z-index: -1;
+    color: #797979;
+    opacity: 0.3;
+}
+.text {
+    float: left;
+    font-family: var(--font), monospace;
+    font-size: var(--font-size);
 }
