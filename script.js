@@ -21,7 +21,7 @@ async function testNyaNet() {
 }
 
 const userHasNyaNet = testNyaNet();
-// const userHasNyaNet = true;
+// const userHasNyaNet = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   // Jammin!!!
@@ -72,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const adCard = document.getElementById("ad");
   if (adCard && !userHasNyaNet) {
       adCard.remove();
-      return false;
       // TODO: Nyanet ad on public site:
       const iframe = adCard.querySelector("iframe");
       if (iframe) {
