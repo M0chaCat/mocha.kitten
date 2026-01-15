@@ -195,4 +195,10 @@ async function updateCounter() {
 
 updateCounter();
 
+if (window.location.hostname == "mocha.kitten") {
+  const el = document.getElementById("pub-webrings");
+  el.remove();
+  return false;
+}
+
 });
