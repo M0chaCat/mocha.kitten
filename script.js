@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
     try {
-      const res = await fetch("http://home.root/steam-status.php");
+      const res = await fetch(makeUrl("home.root/steam-status.php"));
       const data = await res.json();
 
       const img = document.getElementById("game-img");
